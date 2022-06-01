@@ -6,10 +6,6 @@ namespace api.Controllers
     [Route("[controller]")]
     public class BasicApiController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<BasicApiController> _logger;
 
@@ -47,6 +43,13 @@ namespace api.Controllers
         public String Three()
         {
             return "3";
+        }
+
+        [HttpPost(Name = "TestPost")]
+        public bool TestPost(String a, String b)
+        {
+            return true;
+
         }
     }
 }
