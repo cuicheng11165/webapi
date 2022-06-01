@@ -6,41 +6,55 @@ namespace api.Controllers
     [Route("basicApi")]
     public class BasicApiController : ControllerBase
     {
-        [HttpGet("TrueString",Name = "TrueString")]
+        [HttpGet("TrueString", Name = "TrueString")]
         public String TrueString()
         {
             return bool.TrueString;
         }
 
-        [HttpGet("FalseString",Name = "FalseString")]
+        [HttpGet("FalseString", Name = "FalseString")]
         public String FalseString()
         {
             return bool.FalseString;
         }
 
-        [HttpGet("One",Name = "One")]
+        [HttpGet("One", Name = "One")]
         public String One()
         {
             return "1";
         }
 
-        [HttpGet("Two",Name = "Two")]
+        [HttpGet("Two", Name = "Two")]
         public String Two()
         {
             return "2";
         }
 
-        [HttpGet("Three",Name = "Three")]
+        [HttpGet("Three", Name = "Three")]
         public String Three()
         {
             return "3";
         }
 
-        [HttpPost("TestPost",Name = "TestPost")]
-        public bool TestPost(String a, String b)
-        {
-            return true;
+   
 
+        [HttpGet("TestGetAdd", Name = "TestGetAdd")]
+        public int TestGetAdd(int a, int b)
+        {
+            return a + b;
+        }
+        [HttpPost("TestPostAdd", Name = "TestPostAdd")]
+        public int TestPostAdd(PostBody body)
+        {
+            return body.a + body.b;
         }
     }
+
+    public class PostBody
+    {
+        public int a { set; get; }
+        public int b { set; get; }
+    }
+
+
 }
