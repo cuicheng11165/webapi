@@ -36,17 +36,42 @@ namespace api.Controllers
             return "3";
         }
 
-   
+
 
         [HttpGet("TestGetAdd", Name = "TestGetAdd")]
         public int TestGetAdd(int a, int b)
         {
             return a + b;
         }
+
+        [HttpDelete("TestDeleteAdd", Name = "TestDeleteAdd")]
+        public int TestDeleteAdd(int a, int b)
+        {
+            return a + b;
+        }
+
+        [HttpPut("TestPutAdd", Name = "TestPutAdd")]
+        public int TestPutAdd(PostBody body)
+        {
+            return body.a + body.b;
+        }
+
         [HttpPost("TestPostAdd", Name = "TestPostAdd")]
         public int TestPostAdd(PostBody body)
         {
             return body.a + body.b;
+        }
+
+
+        [HttpGet("TestGetAreEqual", Name = "TestGetAreEqual")]
+        public bool TestGetAreEqual(String a, String b)
+        {
+            return string.Equals(a, b, StringComparison.OrdinalIgnoreCase);
+        }
+        [HttpPost("TestPostAreEqual", Name = "TestPostAreEqual")]
+        public bool TestPostAreEqual(PostBodyString body)
+        {
+            return string.Equals(body.a, body.b, StringComparison.OrdinalIgnoreCase);
         }
     }
 
@@ -56,5 +81,10 @@ namespace api.Controllers
         public int b { set; get; }
     }
 
+    public class PostBodyString
+    {
+        public String a { set; get; }
+        public String b { set; get; }
+    }
 
 }
